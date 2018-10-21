@@ -50,6 +50,8 @@ p {
   line-height: 4rem;
 }
 
+
+
 .page-section {
   margin-top: 5rem;
   margin-bottom: 5rem;
@@ -70,6 +72,14 @@ p {
   font-size: 3rem;
   font-weight: 100;
 }
+
+.searchBox input {
+  height: 2.5rem;
+  font-size: 1rem;
+  padding: .5rem;
+  margin: 1rem;
+}
+
 
 .bg-faded {
   background-color: rgba(255, 255, 255, 0.85);
@@ -254,4 +264,14 @@ p {
 
 .font-weight-light {
   font-weight: 100 !important;
+}
+
+.container2 {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.container3 {
+  position: absolute;
 }
