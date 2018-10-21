@@ -1,25 +1,37 @@
-function search() {
-    var input, filter, one, two, three, four, five, six;
-    input = document.getElementById("myInput");
-    filter = input.value.toUpperCase();
-    one = document.getElementById("restaurant-cards");
-    two = one.getElementsByClassName("col-md-6 col-xl-3 d-flex");
-    console.log(two);
-    three = two.getElementsByClassName("car mb-4");
-    console.log(three);
-    four = three.getElementsByClassName("card-body");
-    five = four.getElementsByClassName("row");
-    console.log(five);
-    six = five.getElementsByClassName("col-sm");
-    console.log(six);
-    /*
-    for (i = 0; i < li.length; i++) {
-        a = li[i].getElementsByTagName("a")[0];
-        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
-            li[i].style.display = "";
-        } else {
-            li[i].style.display = "none";
+var input = document.querySelector(".restaurantInput");
+var restaurants = ["McDonalds", "Thaiger Room", "Pagliacci"];
+var restaurantName = document.querySelector(".restaurantName");
+var address = document.querySelector(".address");
+var capacity = document.querySelector(".capacity");
+var foodName = document.querySelector(".foodName");
+var foodDescription = document.querySelector(".foodDescription");
+var foodPrice = document.querySelector(".foodPrice");
+
+function getRestaurant() {
+    axios.get("http://localhost:52350/restaurant")
+    .then(function (response) {
+        var index = restaurants.indexOf(String(input.value));
+        restaurantName.innerHTML = response.data.restaurants[index].DisplayName;
+        a = response.data.restaurants[index].Address;
+        address.innerHTML = "Address: " + a;
+        c = response.data.restaurants[index].Capacity;
+        capacity.innerHTML = "Capacity: " + c;
+        var food = response.data.restaurants[index].FoodItems; 
+        var str = '<ul>';
+        for (let i = 0; i < food.length; i++) {
+            foodName = food[i].Name;
+            foodDescription = food[i].Description;
+            foodPrice = food[i].Price;
+            str += '<li>' + foodName + " " + foodDescription + " " + foodPrice + '</li>';
         }
-    }
-    */
+        str += '</ul>';
+        document.getElementById("food").innerHTML = str;
+        console.log(response);
+    })
+    .catch(function (error) {
+        restaurantName.innerHTML = "(An error has occurred.)";
+    })
 }
+
+var button = document.querySelector(".restaurant-button");
+button.addEventListener("click", getRestaurant);

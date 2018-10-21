@@ -4,6 +4,14 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-business-casual/blob/master/LICENSE)
  */
 
+/* restaurant results */
+.restaurant-results {
+  background-color:rgba(255, 255, 255, 0.85);
+}
+/* end restaurant results */
+
+
+
 /* begin login styling */
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
