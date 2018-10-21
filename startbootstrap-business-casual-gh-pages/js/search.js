@@ -17,14 +17,15 @@ function getRestaurant() {
         c = response.data.restaurants[index].Capacity;
         capacity.innerHTML = "Capacity: " + c;
         var food = response.data.restaurants[index].FoodItems; 
-        var str = '<ul>';
+        var str = "";
         for (let i = 0; i < food.length; i++) {
+            str += '<tr>';
             foodName = food[i].Name;
             foodDescription = food[i].Description;
             foodPrice = food[i].Price;
-            str += '<li>' + foodName + " " + foodDescription + " " + foodPrice + '</li>';
+            str += '<td>' + foodName + "</td><td>" + foodDescription + "</td><td>" + foodPrice + '</td>';
+            str += '</tr>';
         }
-        str += '</ul>';
         document.getElementById("food").innerHTML = str;
         console.log(response);
     })
